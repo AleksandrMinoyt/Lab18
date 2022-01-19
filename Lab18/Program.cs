@@ -11,7 +11,7 @@ namespace Lab18
         static void Main(string[] args)
         {
             string stCorrect = "([тут скобки правильно]{})[]";
-            string stIncorrect = "([]{})[тут скобки не правильно](";
+            string stIncorrect = "(]{})[тут скобки не правильно]";
 
             Console.WriteLine("Строка \"{0}\" содержит {1} расставленые скобки", stCorrect, GetCorrectBrakets(stCorrect) ? "коректно" : "некоректно");
             Console.WriteLine("Строка \"{0}\" содержит {1} расставленые скобки", stIncorrect, GetCorrectBrakets(stIncorrect) ? "коректно" : "некоректно");
@@ -30,7 +30,7 @@ namespace Lab18
                     bracketStack.Push(literal);
                 }
 
-                if (new char[] { '}', ']', ')' }.Contains(literal))
+                if (new char[] { '}', ']', ')' }.Contains(literal)&& bracketStack.Count>0)
                 {
 
                     if (bracketStack.Peek()=='{' && literal.Equals('}') ||
